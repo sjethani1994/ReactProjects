@@ -1,10 +1,8 @@
-
 @import "tailwindcss";
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
 }
 
 #root {
@@ -28,4 +26,53 @@ button {
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Full page background */
+.currency-container {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  /* Currency background image */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+}
+
+/* Converter box */
+.currency-box {
+  width: 420px;
+  max-width: 90%;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.3s ease;
+}
+
+/* Example: box changes background */
+.currency-box:hover {
+  background: rgba(255, 255, 255, 0.97);
+  transform: translateY(-3px);
+}
+
+.currency-title {
+  color: #f97316;
+  margin-bottom: 25px;
+
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
 }
