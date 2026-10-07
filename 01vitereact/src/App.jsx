@@ -24,7 +24,7 @@ function App() {
     },
   ]);
   const [currentUser, setCurrentUser] = useState(null);
-  
+
   const handleAddUser = (userObject) => {
     console.log("App received:", userObject);
 
@@ -50,6 +50,11 @@ function App() {
       ),
     );
   };
+
+  const deleteUserById = (userId) => {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+  };
+
   return (
     <>
       <h1>App is ready</h1>
@@ -59,7 +64,12 @@ function App() {
         onUpdateUser={onUpdateUser}
       />
       {users.map((user) => (
-        <Chai key={user.id} user={user} getUserById={getUserById} />
+        <Chai
+          key={user.id}
+          user={user}
+          getUserById={getUserById}
+          deleteUserById={deleteUserById}
+        />
       ))}
     </>
   );

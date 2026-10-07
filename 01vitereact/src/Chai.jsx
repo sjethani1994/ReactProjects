@@ -8,29 +8,40 @@
 
 // export default Chai;
 
-import "./Chai.css";
+  import "./Chai.css";
 
-const Chai = ({ user: { id, name, role, experience }, getUserById }) => {
-  return (
-    <>
-      <div className="user-card">
-        <div className="user-avatar">{name.charAt(0)}</div>
+  const Chai = ({
+    user: { id, name, role, experience },
+    getUserById,
+    deleteUserById,
+  }) => {
+    return (
+      <>
+        <div className="user-card">
+          <div className="user-avatar">{name.charAt(0)}</div>
 
-        <div className="user-info">
-          <h2>{name}</h2>
-          <p className="role">{role}</p>
+          <div className="user-info">
+            <h2>{name}</h2>
+            <p className="role">{role}</p>
 
-          <div className="user-details">
-            <span>💼 {experience} Years Experience</span>
-            <span>📍 Pune</span>
+            <div className="user-details">
+              <span>💼 {experience} Years Experience</span>
+              <span>📍 Pune</span>
+            </div>
+
+            <button className="view-btn">View Profile</button>
+            <br />
+            <button className="view-btn" onClick={() => getUserById(id)}>
+              Edit Profile
+            </button>
+            <br />
+            <button className="view-btn" onClick={() => deleteUserById(id)}>
+              Delete Profile
+            </button>
           </div>
-
-          <button className="view-btn">View Profile</button>
-          <br /><button className="view-btn" onClick={() => getUserById(id)}>Edit Profile</button>
         </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  };
 
-export default Chai;
+  export default Chai;
