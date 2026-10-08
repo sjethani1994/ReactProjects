@@ -1,6 +1,6 @@
 import "./EmployeeCard.css";
 
-function EmployeeCard({ employee, getEmployee }) {
+function EmployeeCard({ employee, getEmployee, deleteEmployee }) {
   const { id, name, department, salary, experience } = employee;
 
   return (
@@ -26,7 +26,10 @@ function EmployeeCard({ employee, getEmployee }) {
             Edit
           </button>
 
-          <button className="bg-red-600 w-20 text-xl text-white rounded-md py-2">
+          <button
+            className="bg-red-600 w-20 text-xl text-white rounded-md py-2"
+            onClick={() => deleteEmployee(id)}
+          >
             Delete
           </button>
         </div>

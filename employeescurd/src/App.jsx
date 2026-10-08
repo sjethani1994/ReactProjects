@@ -56,6 +56,11 @@ function App() {
       prevEmp.map((employee) => (employee.id === emp.id ? emp : employee)),
     );
   };
+
+  const deleteEmployee = (userId) => {
+    setEmployees((prevEmp) => prevEmp.filter((emp) => emp.id !== userId));
+  };
+
   return (
     <>
       <div className="flex flex-wrap justify-center items-center gap-4">
@@ -64,6 +69,7 @@ function App() {
             key={employee.id}
             employee={employee}
             getEmployee={getEmployee}
+            deleteEmployee={deleteEmployee}
           />
         ))}
 

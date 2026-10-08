@@ -48,6 +48,7 @@ function EmployeeForm({ addEmployee, editEmployee, updateEmployee }) {
 
     updateEmployee(employeeObject);
   };
+
   return (
     <div className="employee-form-container">
       <h2>Add Employee</h2>
