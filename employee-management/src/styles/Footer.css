@@ -1,0 +1,27 @@
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 28px;
+  margin-top: 32px;
+  background: #1f2937;
+  color: #d1d5db;
+  font-size: 14px;
+  position: fixed;
+  width: 97.5%;
+  bottom: 1px;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .app-footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px;
+  }
+}
