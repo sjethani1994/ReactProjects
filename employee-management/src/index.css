@@ -27,3 +27,31 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.btn-view {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-view:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-edit {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #e88719;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background-color: #d97706;
+}

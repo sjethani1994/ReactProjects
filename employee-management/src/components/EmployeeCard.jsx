@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/EmployeeCard.css";
 
 function EmployeeCard({ employee }) {
@@ -6,9 +7,7 @@ function EmployeeCard({ employee }) {
   return (
     <div className="employee-card">
       <div className="employee-card-header">
-        <div className="employee-avatar">
-          {employee.name.charAt(0)}
-        </div>
+        <div className="employee-avatar">{employee.name.charAt(0)}</div>
 
         <div>
           <h2>{employee.name}</h2>
@@ -17,15 +16,28 @@ function EmployeeCard({ employee }) {
       </div>
 
       <div className="employee-details">
-        <p><strong>Email:</strong> {employee.email}</p>
-        <p><strong>Phone:</strong> {employee.phone}</p>
-        <p><strong>Company:</strong> {employee.company.name}</p>
-        <p><strong>City:</strong> {employee.address.city}</p>
+        <p>
+          <strong>Email:</strong> {employee.email}
+        </p>
+        <p>
+          <strong>Phone:</strong> {employee.phone}
+        </p>
+        <p>
+          <strong>Company:</strong> {employee.company.name}
+        </p>
+        <p>
+          <strong>City:</strong> {employee.address.city}
+        </p>
       </div>
 
       <div className="employee-card-actions">
-        <button className="btn-view">View</button>
-        <button className="btn-edit">Edit</button>
+        <Link to={`/employee/${employee.id}/false`} className="btn-view">
+          View
+        </Link>
+        <Link to={`/employee/${employee.id}/true`} className="btn-edit">
+          Edit
+        </Link>
+
         <button className="btn-delete">Delete</button>
       </div>
     </div>
