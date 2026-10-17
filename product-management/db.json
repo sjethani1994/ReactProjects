@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Wireless Headphones",
+      "price": 2499,
+      "category": "Electronics",
+      "description": "Premium wireless headphones with clear sound and a comfortable design.",
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"
+    },
+    {
+      "id": "2",
+      "title": "Mechanical Keyboard",
+      "price": "4000",
+      "category": "Electronics",
+      "description": "Responsive mechanical keyboard designed for work and gaming.",
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600"
+    },
+    {
+      "id": "3",
+      "title": "Running Shoes",
+      "price": 1999,
+      "category": "Footwear",
+      "description": "Lightweight running shoes made for everyday comfort and activity.",
+      "stock": 30,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"
+    },
+    {
+      "id": "4",
+      "title": "Travel Backpack",
+      "price": 1499,
+      "category": "Accessories",
+      "description": "Spacious backpack suitable for travel, college, and daily use.",
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"
+    },
+    {
+      "id": "5",
+      "title": "Smart Watch",
+      "price": 4999,
+      "category": "Electronics",
+      "description": "Modern smartwatch for tracking daily activity and staying connected.",
+      "stock": 20,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"
+    },
+    {
+      "id": "6",
+      "title": "Sunglasses",
+      "price": 999,
+      "category": "Accessories",
+      "description": "Stylish sunglasses for everyday wear and outdoor activities.",
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

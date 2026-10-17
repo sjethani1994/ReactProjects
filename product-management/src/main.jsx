@@ -13,12 +13,12 @@ import Products from "./components/Products.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="products" element={<Products />} />
+      <Route path="" element={<Products />} />
     </Route>,
   ),
 );
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
 );
