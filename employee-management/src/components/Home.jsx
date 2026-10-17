@@ -13,14 +13,25 @@ function Home() {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users",
     );
-    
+
     setEmployees(response.data);
   };
-  
+
+  const deleteEmployee = async (id) => {
+    const response = await axios.delete(
+      `https://jsonplaceholder.typicode.com/users/${id}`,
+    );
+
+    setEmployees((prev) => prev.filter((emp) => emp.id !== id));
+  };
   return (
     <div className="employee-grid">
       {employees.map((employee) => (
-        <EmployeeCard key={employee.id} employee={employee} />
+        <EmployeeCard
+          key={employee.id}
+          employee={employee}
+          deleteEmployee={deleteEmployee}
+        />
       ))}
     </div>
   );

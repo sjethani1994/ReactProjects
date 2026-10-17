@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/EmployeeCard.css";
+import axios from "axios";
 
-function EmployeeCard({ employee }) {
-  console.log(employee);
+function EmployeeCard({ employee, deleteEmployee }) { 
 
+  
   return (
     <div className="employee-card">
       <div className="employee-card-header">
@@ -37,8 +38,7 @@ function EmployeeCard({ employee }) {
         <Link to={`/employee/${employee.id}/true`} className="btn-edit">
           Edit
         </Link>
-
-        <button className="btn-delete">Delete</button>
+        <button className="btn-delete" onClick={() => deleteEmployee(employee.id)}>Delete</button>
       </div>
     </div>
   );
