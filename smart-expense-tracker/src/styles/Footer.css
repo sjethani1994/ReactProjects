@@ -1,0 +1,35 @@
+.app-footer {
+  margin-top: auto;
+  width: 100%;
+  background: #111827;
+  color: #d1d5db;
+}
+
+.footer-container {
+  max-width: 1200px;
+  min-height: 68px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-container p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.footer-tagline {
+  color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+  }
+}

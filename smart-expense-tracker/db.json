@@ -1,0 +1,95 @@
+{
+  "expenses": [
+    {
+      "id": "1",
+      "title": "Groceries",
+      "amount": 1850.31,
+      "category": "Food",
+      "date": "2026-10-18",
+      "paymentMethod": "UPI",
+      "description": "Weekly grocery shopping"
+    },
+    {
+      "id": "2",
+      "title": "Electricity Bill",
+      "amount": 2400,
+      "category": "Bills",
+      "date": "2026-10-16",
+      "paymentMethod": "UPI",
+      "description": "Monthly electricity bill"
+    },
+    {
+      "id": "3",
+      "title": "Petrol",
+      "amount": 1200,
+      "category": "Transport",
+      "date": "2026-10-15",
+      "paymentMethod": "Card",
+      "description": "Bike fuel"
+    },
+    {
+      "id": "4",
+      "title": "Lunch",
+      "amount": 350,
+      "category": "Food",
+      "date": "2026-10-14",
+      "paymentMethod": "Cash",
+      "description": "Lunch with colleagues"
+    },
+    {
+      "id": "5",
+      "title": "Internet Bill",
+      "amount": 999,
+      "category": "Bills",
+      "date": "2026-10-12",
+      "paymentMethod": "UPI",
+      "description": "Monthly broadband subscription"
+    },
+    {
+      "id": "6",
+      "title": "Movie Tickets",
+      "amount": 700,
+      "category": "Entertainment",
+      "date": "2026-10-10",
+      "paymentMethod": "Card",
+      "description": "Weekend movie"
+    },
+    {
+      "id": "7",
+      "title": "Medicine",
+      "amount": 450,
+      "category": "Health",
+      "date": "2026-10-08",
+      "paymentMethod": "Cash",
+      "description": "Pharmacy purchase"
+    },
+    {
+      "id": "8",
+      "title": "Cab Fare",
+      "amount": 280,
+      "category": "Transport",
+      "date": "2026-10-06",
+      "paymentMethod": "UPI",
+      "description": "Ride to the office"
+    },
+    {
+      "title": "Mobile",
+      "amount": 30000,
+      "category": "Other",
+      "date": "2026-10-19",
+      "paymentMethod": "UPI",
+      "notes": "aaaaaaaaaaaaaaa",
+      "id": "lYcMXOMVtVU"
+    },
+    {
+      "title": "Bread Butter",
+      "amount": 250,
+      "category": "Food",
+      "date": "2026-10-19",
+      "paymentMethod": "Cash",
+      "notes": "",
+      "id": "GrOWtCaHcfs"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
