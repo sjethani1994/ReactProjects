@@ -1,0 +1,126 @@
+{
+  "employees": [
+    {
+      "id": "2",
+      "name": "Priya Mehta",
+      "email": "priya@company.com",
+      "position": "UI/UX Designer",
+      "department": "Design",
+      "status": "Active",
+      "phone": "9876543211",
+      "salary": 58000,
+      "joiningDate": "2023-08-21"
+    },
+    {
+      "id": "3",
+      "name": "Rohan Kumar",
+      "email": "rohan@company.com",
+      "position": "HR Executive",
+      "department": "Human Resources",
+      "status": "Inactive",
+      "phone": "9876543212",
+      "salary": 45000,
+      "joiningDate": "2022-11-10"
+    },
+    {
+      "id": "4",
+      "name": "Ananya Patel",
+      "email": "ananya@company.com",
+      "position": "Backend Developer",
+      "department": "Engineering",
+      "status": "Active",
+      "phone": "9876543213",
+      "salary": 70000,
+      "joiningDate": "2023-05-08"
+    },
+    {
+      "id": "5",
+      "name": "Vikram Singh",
+      "email": "vikram@company.com",
+      "position": "Accountant",
+      "department": "Finance",
+      "status": "Active",
+      "phone": "9876543214",
+      "salary": 52000,
+      "joiningDate": "2024-01-12"
+    },
+    {
+      "id": "6",
+      "name": "Sneha Joshi",
+      "email": "sneha@company.com",
+      "position": "Marketing Executive",
+      "department": "Marketing",
+      "status": "Inactive",
+      "phone": "9876543215",
+      "salary": 48000,
+      "joiningDate": "2021-09-20"
+    },
+    {
+      "id": "7",
+      "name": "Aditya Verma",
+      "email": "aditya@company.com",
+      "position": "QA Engineer",
+      "department": "Engineering",
+      "status": "Active",
+      "phone": "9876543216",
+      "salary": 56000,
+      "joiningDate": "2024-06-03"
+    },
+    {
+      "id": "8",
+      "name": "Kavya Reddy",
+      "email": "kavya@company.com",
+      "position": "Recruiter",
+      "department": "Human Resources",
+      "status": "Active",
+      "phone": "9876543217",
+      "salary": 43000,
+      "joiningDate": "2023-02-14"
+    },
+    {
+      "id": "9",
+      "name": "Rahul Desai",
+      "email": "rahul@company.com",
+      "position": "Sales Executive",
+      "department": "Sales",
+      "status": "Inactive",
+      "phone": "9876543218",
+      "salary": 50000,
+      "joiningDate": "2022-07-25"
+    },
+    {
+      "id": "10",
+      "name": "Ishita Kapoor",
+      "email": "ishita@company.com",
+      "position": "Product Manager",
+      "department": "Product",
+      "status": "Active",
+      "phone": "9876543219",
+      "salary": 85000,
+      "joiningDate": "2022-04-18"
+    },
+    {
+      "id": "11",
+      "name": "Karan Malhotra",
+      "email": "karan@company.com",
+      "position": "Data Analyst",
+      "department": "Analytics",
+      "status": "Active",
+      "phone": "9876543220",
+      "salary": 62000,
+      "joiningDate": "2024-02-05"
+    },
+    {
+      "id": "12",
+      "name": "Meera Nair",
+      "email": "meera@company.com",
+      "position": "Finance Manager",
+      "department": "Finance",
+      "status": "Active",
+      "phone": "9876543221",
+      "salary": 90000,
+      "joiningDate": "2021-12-01"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
