@@ -33,3 +33,14 @@
     gap: 8px;
   }
 }
+
+/* Dark Mode — footer is already dark, so just separate it from the dark page */
+.dark .app-footer {
+  background: #1e293b;
+  border-top: 1px solid #334155;
+  color: #cbd5e1;
+}
+
+.dark .footer-tagline {
+  color: #94a3b8;
+}

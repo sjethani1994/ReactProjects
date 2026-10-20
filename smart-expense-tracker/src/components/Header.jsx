@@ -1,7 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import "../styles/Header.css";
+import React, { useContext, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+import ThemeContext from "../utils/ThemeContext";
 
 const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const isDark = theme.isDark;
+
   return (
     <header className="app-header">
       <div className="header-container">
@@ -22,6 +28,16 @@ const Header = () => {
           <NavLink to="/expenses/add" className="add-expense-btn">
             + Add Expense
           </NavLink>
+
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            title={isDark ? "Light mode" : "Dark mode"}
+          >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
         </nav>
       </div>
     </header>

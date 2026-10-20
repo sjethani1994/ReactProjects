@@ -410,3 +410,112 @@
 .actions-column {
   text-align: center;
 }
+
+/* Dark Mode — .dark is set on <html> by ExpenseContextProvider */
+.dark .dashboard {
+  color: #f9fafb;
+}
+
+.dark .dashboard-header p,
+.dark .section-header p,
+.dark .summary-label {
+  color: #9ca3af;
+}
+
+.dark .summary-description {
+  color: #6b7280;
+}
+
+.dark .summary-card,
+.dark .recent-expenses {
+  border-color: #334155;
+  background: #1e293b;
+  box-shadow: none;
+}
+
+.dark .summary-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark .section-header {
+  border-bottom-color: #334155;
+}
+
+.dark .expense-icon,
+.dark .food-avatar,
+.dark .food-badge {
+  background: rgba(234, 88, 12, 0.15);
+  color: #fb923c;
+}
+
+.dark .month-icon,
+.dark .travel-avatar,
+.dark .travel-badge {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+}
+
+.dark .today-icon,
+.dark .health-avatar,
+.dark .health-badge {
+  background: rgba(22, 163, 74, 0.15);
+  color: #4ade80;
+}
+
+.dark .transaction-icon,
+.dark .shopping-avatar,
+.dark .shopping-badge {
+  background: rgba(147, 51, 234, 0.15);
+  color: #c084fc;
+}
+
+.dark .bills-avatar,
+.dark .bills-badge {
+  background: rgba(202, 138, 4, 0.15);
+  color: #facc15;
+}
+
+.dark .view-all-btn {
+  border-color: rgba(234, 88, 12, 0.4);
+  background: rgba(234, 88, 12, 0.1);
+  color: #fb923c;
+}
+
+.dark .view-all-btn:hover {
+  background: rgba(234, 88, 12, 0.2);
+}
+
+.dark .expense-table th {
+  background: #0f172a;
+  color: #9ca3af;
+}
+
+.dark .expense-table td {
+  border-bottom-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark .expense-table tbody tr:hover {
+  background: #273449;
+}
+
+.dark .expense-name,
+.dark .expense-amount {
+  color: #f9fafb !important;
+}
+
+.dark .edit-action {
+  color: #60a5fa;
+}
+
+.dark .edit-action:hover {
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.dark .delete-action {
+  color: #f87171;
+}
+
+.dark .delete-action:hover {
+  background: rgba(220, 38, 38, 0.15);
+}

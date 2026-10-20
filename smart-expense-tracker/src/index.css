@@ -28,3 +28,6 @@ img {
   max-width: 100%;
   display: block;
 }
+.dark body {
+  background: #0f172a;
+}

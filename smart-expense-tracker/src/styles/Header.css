@@ -103,3 +103,56 @@
     padding: 9px 11px;
   }
 }
+
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.dark .theme-toggle {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+/* Dark Mode — .dark is set on <html> by ExpenseContextProvider */
+.dark .app-header {
+  background: #1e293b;
+  border-bottom-color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .app-logo {
+  color: #f9fafb;
+}
+
+.dark .header-nav a {
+  color: #cbd5e1;
+}
+
+.dark .header-nav a:hover,
+.dark .header-nav a.active {
+  color: #fb923c;
+}
+
+.dark .header-nav a.add-expense-btn {
+  color: #ffffff;
+}
+
+.dark .theme-toggle:hover {
+  background: #334155;
+}

@@ -3,9 +3,10 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ThemeContextProvider from "./utils/ThemeContextProvider";
 function App() {
   return (
-    <>
+    <ThemeContextProvider>
       <div className="app-layout">
         <Header />
 
@@ -15,7 +16,7 @@ function App() {
 
         <Footer />
       </div>
-    </>
+    </ThemeContextProvider>
   );
 }
 
