@@ -1,0 +1,70 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "category": "Programming",
+      "isbn": "9780132350884",
+      "publishedYear": 2008,
+      "description": "A handbook of agile software craftsmanship and maintainable code.",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg",
+      "status": "Available"
+    },
+    {
+      "id": "2",
+      "title": "The Pragmatic Programmer",
+      "author": "Andrew Hunt",
+      "category": "Programming",
+      "isbn": "9780135957059",
+      "publishedYear": 1999,
+      "description": "Practical advice for becoming a better and more effective programmer.",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9780135957059-L.jpg",
+      "status": "Borrowed"
+    },
+    {
+      "id": "3",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "category": "Self-Help",
+      "isbn": "9780735211292",
+      "publishedYear": 2018,
+      "description": "Learn how small habits can lead to remarkable results.",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg",
+      "status": "Available"
+    },
+    {
+      "id": "4",
+      "title": "Rich Dad Poor Dad",
+      "author": "Robert T. Kiyosaki",
+      "category": "Finance",
+      "isbn": "9781612680194",
+      "publishedYear": 1997,
+      "description": "Lessons about financial literacy, assets, and wealth building.",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9781612680194-L.jpg",
+      "status": "Available"
+    },
+    {
+      "id": "5",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "category": "Fiction",
+      "isbn": "9780061122415",
+      "publishedYear": 1988,
+      "description": "A shepherd follows his dreams on a journey of discovery.",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9780061122415-L.jpg",
+      "status": "Borrowed"
+    },
+    {
+      "id": "6",
+      "title": "You Don't Know JS Yet",
+      "author": "Kyle Simpson",
+      "category": "Programming",
+      "isbn": "9781098114045",
+      "publishedYear": 2020,
+      "description": "Explore the core mechanisms of JavaScript in depth.",
+      "coverImage": "https://covers.openlibrary.org/b/id/10521270-L.jpg",
+      "status": "Available"
+    }
+  ]
+}
