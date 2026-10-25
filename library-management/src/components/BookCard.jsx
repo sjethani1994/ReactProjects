@@ -1,14 +1,11 @@
-
+import { NavLink } from "react-router-dom";
 import "../styles/BookCard.css";
 
 function BookCard({ book }) {
   return (
     <div className="book-card">
       <div className="book-cover">
-        <img
-          src={book.coverImage}
-          alt="Book cover"
-        />
+        <img src={book.coverImage} alt="Book cover" />
 
         <span className="book-status">{book.status}</span>
       </div>
@@ -28,9 +25,21 @@ function BookCard({ book }) {
         </div>
 
         <div className="book-actions">
-          <button className="btn-view">View</button>
-          <button className="btn-edit">Edit</button>
-          <button className="btn-delete">Delete</button>
+          <NavLink to={`/view/${book.id}`} className="btn-action btn-view">
+            View
+          </NavLink>
+
+          <NavLink to={`/edit/${book.id}`} className="btn-action btn-edit">
+            Edit
+          </NavLink>
+
+          <button
+            type="button"
+            className="btn-action btn-delete"
+            onClick={() => console.log("Delete book:", book.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

@@ -98,15 +98,33 @@
   margin-top: 12px;
 }
 
-.book-actions button {
+.btn-action {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 9px 5px;
   border: 1px solid transparent;
   border-radius: 7px;
+  font-family: inherit;
   font-size: 12px;
   font-weight: 600;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-action:hover {
+  transform: translateY(-1px);
+}
+
+.btn-action:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
 }
 
 .btn-view {

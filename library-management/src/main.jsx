@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Books from "./components/Books.jsx";
+import BookForm from "./components/BookForm.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -11,8 +12,16 @@ const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "",
-        element: <Books />
+        path: "/",
+        element: <Books />,
+      },
+      {
+        path: "add",
+        element: <BookForm />,
+      },
+      {
+        path: ":mode/:id",
+        element: <BookForm />,
       },
     ],
   },

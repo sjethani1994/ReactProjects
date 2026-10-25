@@ -65,6 +65,18 @@
       "description": "Explore the core mechanisms of JavaScript in depth.",
       "coverImage": "https://covers.openlibrary.org/b/id/10521270-L.jpg",
       "status": "Available"
+    },
+    {
+      "title": "Eloquent JavaScript",
+      "author": "Marijn Haverbeke",
+      "category": "Programming",
+      "isbn": "9781593279509",
+      "publishedYear": "2018",
+      "status": "Available",
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9781593279509-L.jpg",
+      "description": "An introduction to JavaScript programming, covering fundamentals, functions, objects",
+      "id": "4Gat_otq0FE"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
