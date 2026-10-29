@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
