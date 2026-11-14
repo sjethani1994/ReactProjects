@@ -1,4 +1,18 @@
+import { useEffect, useState } from "react";
+
 function EmployeeTableFilters({ filterTable }) {
+  const [departments, setDepartments] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [status, setStatus] = useState("");
+
+  const resetFilters = () => {
+    setDepartments("");
+    setSearchText("");
+    setStatus("");
+  };
+  useEffect(() => {
+    filterTable(searchText, departments, status);
+  }, [searchText, departments, status, filterTable]);
   return (
     <>
       {/* Search and Filter Section */}
@@ -12,14 +26,19 @@ function EmployeeTableFilters({ filterTable }) {
 
             <input
               type="text"
+              value={searchText}
               placeholder="Search by name or email..."
-              onChange={(e) => filterTable(e.target.value)}
+              onChange={(e) => setSearchText(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-700 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             />
           </div>
 
           {/* Department Filter */}
-          <select className="w-full sm:w-48 px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-600 bg-white outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+          <select
+            value={departments}
+            onChange={(e) => setDepartments(e.target.value)}
+            className="w-full sm:w-48 px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-600 bg-white outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          >
             <option value="">All Departments</option>
             <option value="Engineering">Engineering</option>
             <option value="HR">HR</option>
@@ -29,7 +48,11 @@ function EmployeeTableFilters({ filterTable }) {
           </select>
 
           {/* Status Filter */}
-          <select className="w-full sm:w-40 px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-600 bg-white outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="w-full sm:w-40 px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-600 bg-white outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          >
             <option value="">All Status</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
@@ -38,6 +61,7 @@ function EmployeeTableFilters({ filterTable }) {
           {/* Reset Button */}
           <button
             type="button"
+            onClick={resetFilters}
             className="w-full sm:w-auto px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition"
           >
             Reset

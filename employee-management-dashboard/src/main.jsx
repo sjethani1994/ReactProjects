@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import EmployeeTable from "./components/EmployeeTable.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AddEmployee from "./components/AddEmployee.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: "employees",
         element: <EmployeeTable />,
+      },
+      {
+        path: "add-employee",
+        element: <AddEmployee />,
       },
     ],
   },

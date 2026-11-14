@@ -1,130 +1,39 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import EmployeeTableFilters from "./EmployeeTableFilters";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEmployees } from "../features/employeeSlice";
+import { NavLink } from "react-router-dom";
 
 const EmployeeTable = () => {
-  let employeesList = [
-    {
-      id: 1,
-      name: "John Smith",
-      email: "john@example.com",
-      department: "Engineering",
-      designation: "Frontend Developer",
-      salary: 75000,
-      status: "Active",
-    },
-    {
-      id: 2,
-      name: "Sarah Johnson",
-      email: "sarah@example.com",
-      department: "HR",
-      designation: "HR Manager",
-      salary: 65000,
-      status: "Active",
-    },
-    {
-      id: 3,
-      name: "Michael Brown",
-      email: "michael@example.com",
-      department: "Engineering",
-      designation: "Backend Developer",
-      salary: 80000,
-      status: "Active",
-    },
-    {
-      id: 4,
-      name: "Emily Davis",
-      email: "emily@example.com",
-      department: "Finance",
-      designation: "Accountant",
-      salary: 55000,
-      status: "Inactive",
-    },
-    {
-      id: 5,
-      name: "David Wilson",
-      email: "david@example.com",
-      department: "Marketing",
-      designation: "Marketing Executive",
-      salary: 50000,
-      status: "Active",
-    },
-    {
-      id: 6,
-      name: "Olivia Taylor",
-      email: "olivia@example.com",
-      department: "Engineering",
-      designation: "UI Developer",
-      salary: 72000,
-      status: "Active",
-    },
-    {
-      id: 7,
-      name: "James Anderson",
-      email: "james@example.com",
-      department: "Sales",
-      designation: "Sales Manager",
-      salary: 68000,
-      status: "Inactive",
-    },
-    {
-      id: 8,
-      name: "Sophia Martinez",
-      email: "sophia@example.com",
-      department: "HR",
-      designation: "Recruiter",
-      salary: 48000,
-      status: "Active",
-    },
-    {
-      id: 9,
-      name: "Daniel Thomas",
-      email: "daniel@example.com",
-      department: "Finance",
-      designation: "Financial Analyst",
-      salary: 62000,
-      status: "Active",
-    },
-    {
-      id: 10,
-      name: "Isabella Garcia",
-      email: "isabella@example.com",
-      department: "Marketing",
-      designation: "Content Writer",
-      salary: 45000,
-      status: "Inactive",
-    },
-    {
-      id: 11,
-      name: "William Moore",
-      email: "william@example.com",
-      department: "Engineering",
-      designation: "Full Stack Developer",
-      salary: 90000,
-      status: "Active",
-    },
-    {
-      id: 12,
-      name: "Ava Martin",
-      email: "ava@example.com",
-      department: "Sales",
-      designation: "Sales Executive",
-      salary: 52000,
-      status: "Active",
-    },
-  ];
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
+  const dispatch = useDispatch();
 
-  const [employees] = useState(employeesList);
-  const [filteredEmployees, setFilteredEmployees] = useState(employeesList);
+  const { employees } = useSelector((state) => state.employee);
 
-  const filterTable = (searchText) => {
-    const filtered = employees.filter(
-      (employee) =>
-        employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
-        employee.email.toLowerCase().includes(searchText.toLowerCase()),
-    );
+  useEffect(() => {
+    dispatch(fetchEmployees());
+  }, [dispatch]);
 
-    setFilteredEmployees(filtered);
-  };
+  const filterTable = useCallback(
+    (searchText, department, status) => {
+      const filtered = employees.filter((employee) => {
+        const matchesSearch =
+          employee.name.toLowerCase().includes(searchText.toLowerCase()) ||
+          employee.email.toLowerCase().includes(searchText.toLowerCase());
+
+        const matchesDepartment =
+          department === "" || employee.department === department;
+
+        const matchesStatus = status === "" || employee.status === status;
+
+        return matchesSearch && matchesDepartment && matchesStatus;
+      });
+
+      setFilteredEmployees(filtered);
+    },
+    [employees],
+  );
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
       {/* Page Heading */}
@@ -138,9 +47,12 @@ const EmployeeTable = () => {
           </p>
         </div>
 
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-md shadow-blue-200 transition">
+        <NavLink
+          to="/add-employee"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-md shadow-blue-200 transition inline-block"
+        >
           + Add Employee
-        </button>
+        </NavLink>
       </div>
 
       {/* Employee Table */}
