@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import EmployeeTableFilters from "./EmployeeTableFilters";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchEmployees } from "../features/employeeSlice";
-import { NavLink } from "react-router-dom";
+import { deleteEmployeeById, fetchEmployees } from "../features/employeeSlice";
+import { NavLink, useNavigate } from "react-router-dom";
+import ConfirmDialog from "./ConfirmDialog";
 
 const EmployeeTable = () => {
   const [filteredEmployees, setFilteredEmployees] = useState([]);
@@ -34,6 +35,33 @@ const EmployeeTable = () => {
     [employees],
   );
 
+  const navigate = useNavigate();
+
+  const viewEmployee = (id) => {
+    navigate(`/employees/view/${id}`);
+  };
+
+  const editEmployee = (id) => {
+    navigate(`/employees/edit/${id}`);
+  };
+
+  // Employee waiting for confirmation. null = dialog closed.
+  const [employeeToDelete, setEmployeeToDelete] = useState(null);
+
+  // Delete button → only opens the dialog
+  const removeEmployee = (employee) => {
+    setEmployeeToDelete(employee);
+  };
+
+  // Dialog's red "Delete" button → actually delete, then close
+  const confirmDelete = () => {
+    dispatch(deleteEmployeeById(employeeToDelete.id));
+    setEmployeeToDelete(null);
+  };
+
+  const cancelDelete = () => {
+    setEmployeeToDelete(null);
+  };
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
       {/* Page Heading */}
@@ -48,7 +76,7 @@ const EmployeeTable = () => {
         </div>
 
         <NavLink
-          to="/add-employee"
+          to="/employees/add"
           className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-md shadow-blue-200 transition inline-block"
         >
           + Add Employee
@@ -158,15 +186,24 @@ const EmployeeTable = () => {
                   {/* Action Buttons */}
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center gap-2">
-                      <button className="px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white transition">
+                      <button
+                        onClick={() => viewEmployee(employee.id)}
+                        className="px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white transition"
+                      >
                         View
                       </button>
 
-                      <button className="px-3 py-1.5 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white transition">
+                      <button
+                        onClick={() => editEmployee(employee.id)}
+                        className="px-3 py-1.5 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white transition"
+                      >
                         Edit
                       </button>
 
-                      <button className="px-3 py-1.5 text-xs font-semibold rounded-md bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition">
+                      <button
+                        onClick={() => removeEmployee(employee)}
+                        className="px-3 py-1.5 text-xs font-semibold rounded-md bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition"
+                      >
                         Delete
                       </button>
                     </div>
@@ -177,6 +214,18 @@ const EmployeeTable = () => {
           </table>
         </div>
       </div>
+
+      <ConfirmDialog
+        open={employeeToDelete !== null}
+        title="Delete employee?"
+        message={
+          employeeToDelete &&
+          `${employeeToDelete.name} will be permanently removed. This can't be undone.`
+        }
+        confirmText="Delete"
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
     </div>
   );
 };
