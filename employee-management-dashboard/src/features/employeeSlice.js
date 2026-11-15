@@ -4,6 +4,7 @@ import {
   deleteEmployee,
   getAllEmployees,
   getEmployee,
+  updateEmployee,
 } from "../services/employeeService";
 
 // ---------- Thunks (async actions that call the service) ----------
@@ -19,6 +20,13 @@ export const createEmployee = createAsyncThunk(
   "employees/createEmployee",
   async (employee) => {
     return await addEmployee(employee);
+  },
+);
+
+export const editEmployee = createAsyncThunk(
+  "employees/editEmployee",
+  async (employee) => {
+    return await updateEmployee(employee);
   },
 );
 
@@ -113,6 +121,18 @@ const employeeSlice = createSlice({
         state.loading = false;
       })
       .addCase(deleteEmployeeById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+      .addCase(editEmployee.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editEmployee.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(editEmployee.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

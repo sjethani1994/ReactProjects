@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   clearSelectedEmployee,
   createEmployee,
+  editEmployee,
   getEmployeeById,
 } from "../features/employeeSlice";
 import { DEPARTMENTS, STATUSES } from "../constants";
@@ -37,6 +38,7 @@ const EmployeeForm = ({ mode }) => {
   const { selectedEmployee } = useSelector((state) => state.employee);
   const [submitError, setSubmitError] = useState(null);
   const isView = mode === "view";
+  const isAdd = mode === "add";
 
   const {
     register,
@@ -61,12 +63,21 @@ const EmployeeForm = ({ mode }) => {
   const onSubmit = async (employee) => {
     try {
       setSubmitError(null);
-      await dispatch(createEmployee(employee)).unwrap();
+      if (isAdd) {
+        await dispatch(createEmployee(employee)).unwrap();
+      } else {
+        await dispatch(editEmployee({ ...employee, id })).unwrap(); // id from the URL
+      }
       navigate("/employees");
     } catch (error) {
       setSubmitError(error.message);
     }
   };
+
+  let buttonText = isAdd ? "Save Employee" : "Update Employee";
+  if (isSubmitting) {
+    buttonText = isAdd ? "Saving..." : "Updating...";
+  }
 
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-8">
@@ -214,7 +225,7 @@ const EmployeeForm = ({ mode }) => {
               disabled={isView || isSubmitting}
               className="px-6 py-3 rounded-lg bg-blue-600 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition disabled:bg-gray-300 disabled:shadow-none disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Saving..." : "Save Employee"}
+              {buttonText}
             </button>
           </div>
         </form>

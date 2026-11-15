@@ -6,19 +6,28 @@ import {
   getDoc,
   getDocs,
   serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../Firebase/fireBase";
 
 const employeesCollection = collection(db, "employees");
 
-// Firestore document → plain object for Redux.
-// createdAt comes as a Firestore Timestamp, which Redux can't store, so make it a string.
+// Firestore Timestamp → string (Redux can't store Timestamp objects).
+// If it's already a string (older saved data), keep it as it is.
+const toDateString = (value) =>
+  typeof value?.toDate === "function"
+    ? value.toDate().toISOString()
+    : (value ?? null);
+
+// Firestore document → plain object for Redux
 const toEmployee = (document) => {
   const data = document.data();
+
   return {
-    id: document.id,
     ...data,
-    createdAt: data.createdAt?.toDate().toISOString() ?? null,
+    id: document.id, // after ...data, so a stray "id" field saved earlier can't override it
+    createdAt: toDateString(data.createdAt),
+    updatedAt: toDateString(data.updatedAt),
   };
 };
 
@@ -44,6 +53,20 @@ export const addEmployee = async (employee) => {
     ...employee,
     createdAt: new Date().toISOString(),
   };
+};
+
+export const updateEmployee = async (employee) => {
+  // Take id and createdAt out: id is the document's name (not a field),
+  // and createdAt must never change when editing.
+  // eslint-disable-next-line no-unused-vars
+  const { id, createdAt, ...changes } = employee;
+
+  await updateDoc(doc(db, "employees", id), {
+    ...changes,
+    updatedAt: serverTimestamp(),
+  });
+
+  return { ...employee, updatedAt: new Date().toISOString() };
 };
 
 export const deleteEmployee = async (id) => {
