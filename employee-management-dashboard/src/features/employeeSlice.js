@@ -6,61 +6,53 @@ import {
   getEmployee,
 } from "../services/employeeService";
 
+// ---------- Thunks (async actions that call the service) ----------
+
 export const fetchEmployees = createAsyncThunk(
   "employees/fetchEmployees",
   async () => {
-    const employees = await getAllEmployees();
-    return employees;
+    return await getAllEmployees();
   },
 );
 
 export const createEmployee = createAsyncThunk(
   "employees/createEmployee",
-  async (employeeData) => {
-    const response = await addEmployee(employeeData);
-    return response;
+  async (employee) => {
+    return await addEmployee(employee);
   },
 );
 
 export const getEmployeeById = createAsyncThunk(
   "employees/getEmployeeById",
-  async (employeeId, { rejectWithValue }) => {
-    const employee = await getEmployee(employeeId);
-
-    // getEmployee returns null for a bad id → treat it as an error, not success
+  async (id, { rejectWithValue }) => {
+    const employee = await getEmployee(id);
     if (!employee) {
       return rejectWithValue("Employee not found");
     }
-
     return employee;
   },
 );
 
 export const deleteEmployeeById = createAsyncThunk(
   "employees/deleteEmployeeById",
-  async (employeeId, { dispatch }) => {
-    // deleteEmployee returns the id. If Firestore fails it throws,
-    // and createAsyncThunk turns that into the "rejected" action for us.
-    const deletedId = await deleteEmployee(employeeId);
-
-    // Reload the list so the table matches the database.
-    // A thunk can dispatch other thunks — like chaining in an NgRx effect.
-    dispatch(fetchEmployees());
-
-    return deletedId;
+  async (id, { dispatch }) => {
+    await deleteEmployee(id);
+    dispatch(fetchEmployees()); // reload the list after deleting
+    return id;
   },
 );
 
-export const employeeSlice = createSlice({
+// ---------- Slice ----------
+
+const employeeSlice = createSlice({
   name: "employee",
   initialState: {
-    employees: [],
-    selectedEmployee: null,
+    employees: [], // the list page
+    selectedEmployee: null, // the view / edit page
     loading: false,
     error: null,
   },
   reducers: {
-    // Call when leaving the form so the next visit doesn't show stale data
     clearSelectedEmployee: (state) => {
       state.selectedEmployee = null;
       state.error = null;
@@ -68,8 +60,10 @@ export const employeeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Get all
       .addCase(fetchEmployees.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchEmployees.fulfilled, (state, action) => {
         state.loading = false;
@@ -80,7 +74,7 @@ export const employeeSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // Add employee
+      // Add
       .addCase(createEmployee.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -94,30 +88,28 @@ export const employeeSlice = createSlice({
         state.error = action.error.message;
       })
 
-      //getEmployeeById
+      // Get one
       .addCase(getEmployeeById.pending, (state) => {
         state.loading = true;
         state.error = null;
-        state.selectedEmployee = null; // drop the previous employee while the new one loads
+        state.selectedEmployee = null;
       })
       .addCase(getEmployeeById.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
         state.selectedEmployee = action.payload;
       })
       .addCase(getEmployeeById.rejected, (state, action) => {
         state.loading = false;
-        // action.payload = our rejectWithValue message; action.error = unexpected (network etc.)
+        // payload = our "Employee not found"; error = anything unexpected
         state.error = action.payload ?? action.error.message;
       })
 
-      // Delete employee
+      // Delete
       .addCase(deleteEmployeeById.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(deleteEmployeeById.fulfilled, (state) => {
-        // The list itself is replaced by fetchEmployees.fulfilled
         state.loading = false;
       })
       .addCase(deleteEmployeeById.rejected, (state, action) => {
